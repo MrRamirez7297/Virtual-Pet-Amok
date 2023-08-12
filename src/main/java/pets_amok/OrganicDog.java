@@ -11,6 +11,7 @@ public class OrganicDog extends OrganicPet implements Pets {
     }
 
     public void walk() {
+        
     }
 
 }
