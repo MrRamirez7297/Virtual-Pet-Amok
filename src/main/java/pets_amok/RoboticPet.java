@@ -5,14 +5,14 @@ public abstract class RoboticPet extends VirtualPet {
 
     protected int rust;
 
-    protected RoboticPet(String name) {
-        super(name);
+    protected RoboticPet(String name, String type) {
+        super(name,type);
         this.energy = 50;
         this.rust = 50;
     }
 
-    protected RoboticPet(String name, int health, int happiness, int energy, int rust) {
-        super(name, health, happiness);
+    protected RoboticPet(String name, String type, int health, int happiness, int energy, int rust) {
+        super(name, type, health, happiness);
         this.energy = energy;
         this.rust = rust;
     }

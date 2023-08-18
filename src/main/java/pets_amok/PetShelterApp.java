@@ -6,15 +6,15 @@ public class PetShelterApp {
     public static void main(String[] args) {
         PetShelter shelter = new PetShelter();
 
-        // OrganicDog organicPet1 = new OrganicPet("Bob", "Dog");
-        // OrganicPet organicPet2 = new OrganicPet("Rick", "Cat");
-        // RoboticPet roboticPet1 = new RoboticPet("Sparky", "Dog");
-        // RoboticPet roboticPet2 = new RoboticPet("Milo", "Cat");
+        OrganicPet organicPet1 = new OrganicDog("Bob", "Dog");
+        OrganicPet organicPet2 = new OrganicCat("Rick", "Cat");
+        RoboticPet roboticPet1 = new RoboticDog("Sparky", "Dog");
+        RoboticPet roboticPet2 = new RoboticCat("Milo", "Cat");
 
-        // shelter.addPet(organicPet1);
-        // shelter.addPet(organicPet2);
-        // shelter.addPet(roboticPet1);
-        // shelter.addPet(roboticPet2);
+        shelter.addPet((OrganicDog) organicPet1);
+        shelter.addPet((OrganicCat) organicPet2);
+        shelter.addPet((RoboticDog) roboticPet1);
+        shelter.addPet((RoboticCat) roboticPet2);
 
         Scanner scan = new Scanner(System.in);
 
@@ -111,12 +111,37 @@ public class PetShelterApp {
     }
 
     private static void displayPets(PetShelter shelter) {
-        System.out.println(" Organic Pets ");
+        System.out.println();
+        System.out.println("                     Organic Pets ");
+        System.out.println();
         System.out.println(" Name   |  Type  | Health | Happiness | Hunger | Thirst | ");
         System.out.println("--------|--------|--------|-----------|--------|--------|");
-        for (OrganicPet pet : shelter.getOrganicPets()) {
-            System.out.printf("%-9s|%-10s |%-10s|%-9s |%-9s|\n", pet.getName(), pet.getType(), pet.getHealth(),pet.getHappiness(), pet.getHunger(),
-                    pet.getThirst());
+        for (OrganicDog pet : shelter.getOrganicDog()) {
+            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+                    pet.getHappiness(),
+                    pet.getHunger(), pet.getThirst());
         }
-}
+        for (OrganicCat pet : shelter.getOrganicCat()) {
+            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+                    pet.getHappiness(),
+                    pet.getHunger(), pet.getThirst());
+        }
+        System.out.println();
+        System.out.println("                     Robotic Pets ");
+        System.out.println();
+        System.out.println(" Name   |  Type  | Health | Happiness | Energy |  Rust  | ");
+        System.out.println("--------|--------|--------|-----------|--------|--------|");
+        for (RoboticDog pet : shelter.getRoboticDog()) {
+            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+                    pet.getHappiness(),
+                    pet.getEnergy(), pet.getRust());
+        }
+        for (RoboticCat pet : shelter.getRoboticCat()) {
+            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+                    pet.getHappiness(),
+                    pet.getEnergy(), pet.getRust());
+        }
+        System.out.println();
+    }
+
 }

@@ -23,7 +23,7 @@ public class PetShelter {
     return roboticDog.values();
   }
 
-  public Collection<RoboticCat> getRoboticCats() {
+  public Collection<RoboticCat> getRoboticCat() {
     return roboticCat.values();
   }
 
