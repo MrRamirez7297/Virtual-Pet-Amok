@@ -6,15 +6,15 @@ public class PetShelterApp {
     public static void main(String[] args) {
         PetShelter shelter = new PetShelter();
 
-        OrganicDog organicPet1 = new OrganicPet("Bob", "Dog");
-        OrganicPet organicPet2 = new OrganicPet("Rick", "Cat");
-        RoboticPet roboticPet1 = new RoboticPet("Sparky", "Dog");
-        RoboticPet roboticPet2 = new RoboticPet("Milo", "Cat");
+        // OrganicDog organicPet1 = new OrganicPet("Bob", "Dog");
+        // OrganicPet organicPet2 = new OrganicPet("Rick", "Cat");
+        // RoboticPet roboticPet1 = new RoboticPet("Sparky", "Dog");
+        // RoboticPet roboticPet2 = new RoboticPet("Milo", "Cat");
 
-        shelter.addPet(organicPet1);
-        shelter.addPet(organicPet2);
-        shelter.addPet(roboticPet1);
-        shelter.addPet(roboticPet2);
+        // shelter.addPet(organicPet1);
+        // shelter.addPet(organicPet2);
+        // shelter.addPet(roboticPet1);
+        // shelter.addPet(roboticPet2);
 
         Scanner scan = new Scanner(System.in);
 
@@ -31,8 +31,8 @@ public class PetShelterApp {
             System.out.println("Press 5: Give the organic pets water? ");
             System.out.println("Press 6: Oil the robotic pets? ");
             System.out.println("Press 7: Play with a pet? ");
-            System.out.println("Press 8: Clean all the pets cages? ");
-            System.out.println("Press 9: Walk all the pets? ");
+            System.out.println("Press 8: Clean a pets cage? ");
+            System.out.println("Press 9: Walk a pet? ");
             System.out.println("Press 0: Exit shelter");
 
             String input = scan.nextLine();
@@ -40,14 +40,69 @@ public class PetShelterApp {
             String name;
 
             switch (input) {
-                
-                case "1":
-                    System.out.println("What is the name of this pet?");
+
+                // case "1":
+                // System.out.println("What is the name of this pet?");
+                // name = scan.nextLine();
+                // System.out.println("Is this a Robotic or Organic pet?");
+                // String type = scan.nextLine();
+                // System.out.printf(" %s has been added to the shelter! \n", name);
+                // shelter.addPet(new VirtualPet(name, type));
+                // break;
+
+                case "2":
+                    System.out.println("Which pet do you want to adopt?");
                     name = scan.nextLine();
-                    System.out.println("What type of animal is this pet?");
-                    String type = scan.nextLine();
-                    System.out.printf(" %s has been added to the shelter! \n", name);
-                    shelter.addPet(new VirtualPet(name, type));
+                    System.out.printf("Ok, you adopted %s \n", name);
+                    shelter.removePet(name);
+                    break;
+
+                case "3":
+                    System.out.println("Ok, you fed the Organic pets!");
+                    shelter.feedAll();
+                    break;
+
+                case "4":
+                    System.out.println("Ok, you charged the Robotic pets!");
+                    shelter.chargeAll();
+                    break;
+
+                case "5":
+                    System.out.println("Ok, you gave the Organic pets water!");
+                    shelter.waterAll();
+                    break;
+
+                case "6":
+                    System.out.println("Ok, you oiled the Robotic pets water!");
+                    shelter.oilAll();
+                    break;
+
+                case "7":
+                    System.out.println("Ok, which pet would you like to play with?");
+                    displayPets(shelter);
+                    name = scan.nextLine();
+                    System.out.printf("Ok, you played with %s \n", name);
+                    shelter.playSingle(name);
+                    break;
+
+                case "8":
+                    System.out.println("Ok, which pet's cage do you want to clean?");
+                    displayPets(shelter);
+                    name = scan.nextLine();
+                    System.out.printf("Ok, you cleaned %s cage \n", name);
+                    break;
+
+                case "9":
+                    System.out.println("Ok, which pet do you want to walk?");
+                    displayPets(shelter);
+                    name = scan.nextLine();
+                    System.out.printf("Ok, you walked %s !\n", name);
+                    break;
+
+                case "0":
+                    System.out.println("You are exiting.");
+                    System.exit(0);
+                default:
                     break;
 
             }
@@ -59,6 +114,9 @@ public class PetShelterApp {
         System.out.println(" Organic Pets ");
         System.out.println(" Name   |  Type  | Health | Happiness | Hunger | Thirst | ");
         System.out.println("--------|--------|--------|-----------|--------|--------|");
-       // for ()
-    }
+        for (OrganicPet pet : shelter.getOrganicPets()) {
+            System.out.printf("%-9s|%-10s |%-10s|%-9s |%-9s|\n", pet.getName(), pet.getType(), pet.getHealth(),pet.getHappiness(), pet.getHunger(),
+                    pet.getThirst());
+        }
+}
 }

@@ -9,6 +9,7 @@ public class PetShelter {
   Map<String, OrganicCat> organicCat = new HashMap<>();
   Map<String, RoboticDog> roboticDog = new HashMap<>();
   Map<String, RoboticCat> roboticCat = new HashMap<>();
+  Map<String, OrganicPet> organicPet = new HashMap<>();
 
   public Collection<OrganicDog> getOrganicDog() {
     return organicDog.values();
@@ -26,6 +27,14 @@ public class PetShelter {
     return roboticCat.values();
   }
 
+  public Collection<OrganicPet> getOrganicPets() {
+    return organicPet.values();
+  }
+
+  // public boolean addPet(VirtualPet pet) {
+  //   if (organicDog.addPet(name)){
+  //     organicDog.put(pet).addPet();
+  //   }
   public void addPet(OrganicDog pet) {
     organicDog.put(pet.getName(), pet);
   }

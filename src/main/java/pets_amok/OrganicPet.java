@@ -41,4 +41,7 @@ public abstract class OrganicPet extends VirtualPet {
 
     }
 
+    public void getType() {
+    }
+
 }
