@@ -48,11 +48,16 @@ public abstract class VirtualPet {
     }
 
     protected void time() {
+        if (health >= 50){
+            health -= 10;
+        }
+        happiness -= 5;
 
     }
 
     protected void clean() {
-
+        happiness += 5;
+        health += 10;
     }
 
     protected void remove() {
@@ -60,6 +65,7 @@ public abstract class VirtualPet {
     }
 
     protected void play() {
-
+        happiness += 10;
+        health += 5;
     }
 }

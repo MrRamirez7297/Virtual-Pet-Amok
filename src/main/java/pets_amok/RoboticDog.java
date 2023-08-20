@@ -12,6 +12,9 @@ public class RoboticDog extends RoboticPet implements Pets {
 
     public void walk() {
 
+        if (happiness >= 0) {
+            happiness += 50;
+        }
     }
 
 }

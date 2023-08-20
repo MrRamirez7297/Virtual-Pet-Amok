@@ -9,6 +9,9 @@ public class OrganicCat extends OrganicPet implements Pets{
     }
 	
 	public void walk() {
+        if (happiness >= 0){
+            happiness += 50;
+        }
 
     
     }

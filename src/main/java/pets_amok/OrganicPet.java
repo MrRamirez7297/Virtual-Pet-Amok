@@ -42,7 +42,10 @@ public abstract class OrganicPet extends VirtualPet {
     }
 
     protected void water() {
-
+        if (thirst >= 50) {
+            thirst -= 50;
+        }
+        happiness -= 5;
     }
 
 }

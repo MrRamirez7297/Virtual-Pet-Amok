@@ -34,10 +34,20 @@ public abstract class RoboticPet extends VirtualPet {
     }
 
     protected void charge() {
+        
+        if (energy >= 50) {
+            energy -= 50;
+        }
+        rust+= 5;
+        happiness -= 5;
 
     }
 
     protected void oil() {
+        if (rust >= 50) {
+            rust -= 50;
+        }
+        happiness -= 5;
 
     }
 }

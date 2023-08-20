@@ -16,11 +16,11 @@ public class PetShelterApp {
         shelter.addPet((RoboticDog) roboticPet1);
         shelter.addPet((RoboticCat) roboticPet2);
 
+        shelter.shelterTime();
         Scanner scan = new Scanner(System.in);
 
         while (true) {
-
-            shelter.shelterTime();
+            System.out.println();
             System.out.println("Here are all the Pets at our shelter!");
             displayPets(shelter);
             System.out.println("What would you like to do?");
