@@ -1,18 +1,18 @@
 package pets_amok;
 
-public abstract class RoboticPet extends VirtualPet {
+public abstract class RoboticPet extends VirtualPets {
     protected int energy;
 
     protected int rust;
 
-    protected RoboticPet(String name, String type) {
-        super(name,type);
+    protected RoboticPet(String name) {
+        super(name);
         this.energy = 50;
         this.rust = 50;
     }
 
-    protected RoboticPet(String name, String type, int health, int happiness, int energy, int rust) {
-        super(name, type, health, happiness);
+    protected RoboticPet(String name, int health, int happiness, int energy, int rust) {
+        super(name, health, happiness);
         this.energy = energy;
         this.rust = rust;
     }

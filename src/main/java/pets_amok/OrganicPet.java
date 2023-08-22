@@ -1,18 +1,18 @@
 package pets_amok;
 
-public abstract class OrganicPet extends VirtualPet {
+public abstract class OrganicPet extends VirtualPets {
     protected int hunger;
 
     protected int thirst;
 
-    protected OrganicPet(String name, String type) {
-        super(name, type);
+    protected OrganicPet(String name) {
+        super(name);
         this.hunger = 50;
         this.thirst = 50;
     }
 
-    protected OrganicPet(String name, String type, int health, int happiness, int hunger, int thirst) {
-        super(name, type, health, happiness);
+    protected OrganicPet(String name, int health, int happiness, int hunger, int thirst) {
+        super(name, health, happiness);
         this.hunger = hunger;
         this.thirst = thirst;
     }

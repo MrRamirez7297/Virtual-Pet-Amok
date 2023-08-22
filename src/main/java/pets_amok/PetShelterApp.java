@@ -6,15 +6,10 @@ public class PetShelterApp {
     public static void main(String[] args) {
         PetShelter shelter = new PetShelter();
 
-        OrganicPet organicPet1 = new OrganicDog("Bob", "Dog");
-        OrganicPet organicPet2 = new OrganicCat("Rick", "Cat");
-        RoboticPet roboticPet1 = new RoboticDog("Sparky", "Dog");
-        RoboticPet roboticPet2 = new RoboticCat("Milo", "Cat");
-
-        shelter.addPet((OrganicDog) organicPet1);
-        shelter.addPet((OrganicCat) organicPet2);
-        shelter.addPet((RoboticDog) roboticPet1);
-        shelter.addPet((RoboticCat) roboticPet2);
+        shelter.addPet(new OrganicDogs("Bob"));
+        shelter.addPet(new OrganicCats("Rick"));
+        shelter.addPet(new RoboticDogs("Sparky"));
+        shelter.addPet(new RoboticCats("Milo"));
 
         shelter.shelterTime();
         Scanner scan = new Scanner(System.in);
@@ -41,17 +36,13 @@ public class PetShelterApp {
 
             switch (input) {
 
-                // case "1":
-                // System.out.println("What is the name of this pet?");
-                // name = scan.nextLine();
-                // System.out.println("Is this a Robotic or Organic pet?");
-                // String type = scan.nextLine();
-                // System.out.printf(" %s has been added to the shelter! \n", name);
-                // shelter.addPet(new VirtualPet(name, type));
-                // break;
+                case "1":
+                    admitPet(shelter, scan);
+                    break;
 
                 case "2":
                     System.out.println("Which pet do you want to adopt?");
+                    displayPets(shelter);
                     name = scan.nextLine();
                     System.out.printf("Ok, you adopted %s \n", name);
                     shelter.removePet(name);
@@ -59,22 +50,22 @@ public class PetShelterApp {
 
                 case "3":
                     System.out.println("Ok, you fed the Organic pets!");
-                    shelter.feedAll();
+                    shelter.feed();
                     break;
 
                 case "4":
                     System.out.println("Ok, you charged the Robotic pets!");
-                    shelter.chargeAll();
+                    shelter.charge();
                     break;
 
                 case "5":
                     System.out.println("Ok, you gave the Organic pets water!");
-                    shelter.waterAll();
+                    shelter.water();
                     break;
 
                 case "6":
                     System.out.println("Ok, you oiled the Robotic pets water!");
-                    shelter.oilAll();
+                    shelter.oil();
                     break;
 
                 case "7":
@@ -114,34 +105,67 @@ public class PetShelterApp {
         System.out.println();
         System.out.println("                     Organic Pets ");
         System.out.println();
-        System.out.println(" Name   |  Type  | Health | Happiness | Hunger | Thirst | ");
-        System.out.println("--------|--------|--------|-----------|--------|--------|");
-        for (OrganicDog pet : shelter.getOrganicDog()) {
-            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+        System.out.println(" Name   | Health | Happiness | Hunger | Thirst | ");
+        System.out.println("--------|--------|-----------|--------|--------|");
+        for (OrganicDogs pet : shelter.getOrganicDogs()) {
+            System.out.printf("%-8s|%-7s |%-11s|%-8s|%-8s|\n", pet.getName(), pet.getHealth(),
                     pet.getHappiness(),
                     pet.getHunger(), pet.getThirst());
         }
-        for (OrganicCat pet : shelter.getOrganicCat()) {
-            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+        for (OrganicCats pet : shelter.getOrganicCats()) {
+            System.out.printf("%-8s|%-7s |%-11s|%-8s|%-8s|\n", pet.getName(), pet.getHealth(),
                     pet.getHappiness(),
                     pet.getHunger(), pet.getThirst());
         }
         System.out.println();
         System.out.println("                     Robotic Pets ");
         System.out.println();
-        System.out.println(" Name   |  Type  | Health | Happiness | Energy |  Rust  | ");
-        System.out.println("--------|--------|--------|-----------|--------|--------|");
-        for (RoboticDog pet : shelter.getRoboticDog()) {
-            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+        System.out.println(" Name   | Health | Happiness | Energy |  Rust  | ");
+        System.out.println("--------|--------|-----------|--------|--------|");
+        for (RoboticDogs pet : shelter.getRoboticDogs()) {
+            System.out.printf("%-8s|%-7s |%-11s|%-8s|%-8s|\n", pet.getName(), pet.getHealth(),
                     pet.getHappiness(),
                     pet.getEnergy(), pet.getRust());
         }
-        for (RoboticCat pet : shelter.getRoboticCat()) {
-            System.out.printf("%-8s|%-7s |%-8s|%-10s |%-8s|%-8s|\n", pet.getName(), pet.getType(), pet.getHealth(),
+        for (RoboticCats pet : shelter.getRoboticCats()) {
+            System.out.printf("%-8s|%-7s |%-11s|%-8s|%-8s|\n", pet.getName(), pet.getHealth(),
                     pet.getHappiness(),
                     pet.getEnergy(), pet.getRust());
         }
         System.out.println();
+    }
+
+    public static void admitPet(PetShelter shelter, Scanner scan) {
+        System.out.println("What is the name of this pet?");
+        String name = scan.nextLine();
+        System.out.println("1 -- Robotic Dog");
+        System.out.println("2 -- Robotic Cat");
+        System.out.println("3 -- Organic Dog");
+        System.out.println("4 -- Organic Cat");
+
+        String input = scan.nextLine();
+
+        switch (input) {
+            case "1":
+                shelter.addPet(new RoboticDogs(name));
+                break;
+
+            case "2":
+                shelter.addPet(new RoboticCats(name));
+                break;
+
+            case "3":
+                shelter.addPet(new OrganicDogs(name));
+                break;
+
+            case "4":
+                shelter.addPet(new OrganicCats(name));
+                break;
+            default:
+                break;
+
+        }
+        System.out.printf(" %s has been added to the shelter! \n", name);
     }
 
 }

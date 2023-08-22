@@ -1,160 +1,99 @@
 package pets_amok;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PetShelter {
-  Map<String, OrganicDog> organicDog = new HashMap<>();
-  Map<String, OrganicCat> organicCat = new HashMap<>();
-  Map<String, RoboticDog> roboticDog = new HashMap<>();
-  Map<String, RoboticCat> roboticCat = new HashMap<>();
-  Map<String, OrganicPet> organicPet = new HashMap<>();
-  Map<String, VirtualPet> virtualPet = new HashMap<>();
+  private Map<String, VirtualPets> virtualPets = new HashMap<>();
 
-  public Collection<OrganicDog> getOrganicDog() {
-    return organicDog.values();
+  public Collection<OrganicDogs> getOrganicDogs() {
+    Collection<OrganicDogs> cats = new ArrayList<>();
+    for (var pet : virtualPets.values())
+      if (pet instanceof OrganicDogs)
+        cats.add((OrganicDogs) pet);
+    return cats;
   }
 
-  public Collection<OrganicCat> getOrganicCat() {
-    return organicCat.values();
+  public Collection<RoboticDogs> getRoboticDogs() {
+    Collection<RoboticDogs> cats = new ArrayList<>();
+    for (var pet : virtualPets.values())
+      if (pet instanceof RoboticDogs)
+        cats.add((RoboticDogs) pet);
+    return cats;
   }
 
-  public Collection<RoboticDog> getRoboticDog() {
-    return roboticDog.values();
+  public Collection<OrganicCats> getOrganicCats() {
+    Collection<OrganicCats> cats = new ArrayList<>();
+    for (var pet : virtualPets.values())
+      if (pet instanceof OrganicCats)
+        cats.add((OrganicCats) pet);
+    return cats;
   }
 
-  public Collection<RoboticCat> getRoboticCat() {
-    return roboticCat.values();
+  public Collection<RoboticCats> getRoboticCats() {
+    Collection<RoboticCats> cats = new ArrayList<>();
+    for (var pet : virtualPets.values())
+      if (pet instanceof RoboticCats)
+        cats.add((RoboticCats) pet);
+    return cats;
   }
 
-  public Collection<OrganicPet> getOrganicPets() {
-    return organicPet.values();
+  public Collection<VirtualPets> getVirtualPets() {
+    return virtualPets.values();
   }
 
-  public Collection<VirtualPet> getVirtualPets() {
-    return virtualPet.values();
-  }
-
-  // public boolean addPet(VirtualPet pet) {
-  //   if (organicDog.addPet(name)){
-  //     organicDog.put(pet).addPet();
-  //   }
-  public void addPet(OrganicDog pet) {
-    organicDog.put(pet.getName(), pet);
-  }
-
-  public void addPet(OrganicCat pet) {
-    organicCat.put(pet.getName(), pet);
-  }
-
-  public void addPet(RoboticDog pet) {
-    roboticDog.put(pet.getName(), pet);
-  }
-
-  public void addPet(RoboticCat pet) {
-    roboticCat.put(pet.getName(), pet);
+  public void addPet(VirtualPets pet) {
+    virtualPets.put(pet.getName(), pet);
   }
 
   public boolean removePet(String name) {
-    if (organicDog.containsKey(name)) {
-      organicDog.get(name).remove();
-    } else if (organicCat.containsKey(name)) {
-      organicCat.get(name).remove();
-    } else if (roboticDog.containsKey(name)) {
-      roboticDog.get(name).remove();
-    } else if (roboticCat.containsKey(name)) {
-      roboticCat.get(name).remove();
-    } else {
-      return false;
-    }
-    return true;
+    return virtualPets.remove(name) != null;
   }
 
-  public void feedAll() {
-    for (var pet : organicDog.values()) {
-      pet.feed();
-    }
-    for (var pet : organicCat.values()) {
-      pet.feed();
-    }
+  public void feed() {
+    for (var pet : virtualPets.values())
+      if (pet instanceof OrganicPet)
+        ((OrganicPet) pet).feed();
   }
 
-  public void chargeAll() {
-    for (var pet : roboticDog.values()) {
-      pet.charge();
-    }
-    for (var pet : roboticCat.values()) {
-      pet.charge();
-    }
+  public void charge() {
+    for (var pet : virtualPets.values())
+      if (pet instanceof RoboticPet)
+        ((RoboticPet) pet).charge();
   }
 
-  public void waterAll() {
-    for (var pet : organicDog.values()) {
-      pet.water();
-    }
-    for (var pet : organicCat.values()) {
-      pet.water();
-    }
+  public void water() {
+    for (var pet : virtualPets.values())
+      if (pet instanceof OrganicPet)
+        ((OrganicPet) pet).water();
   }
 
-  public void oilAll() {
-    for (var pet : roboticDog.values()) {
-      pet.oil();
-    }
-    for (var pet : roboticCat.values()) {
-      pet.oil();
-    }
-
+  public void oil() {
+    for (var pet : virtualPets.values())
+      if (pet instanceof RoboticPet)
+        ((RoboticPet) pet).oil();
   }
 
   public boolean playSingle(String name) {
-    if (organicDog.containsKey(name)) {
-      organicDog.get(name).play();
-    } else if (organicCat.containsKey(name)) {
-      organicCat.get(name).play();
-    } else if (roboticDog.containsKey(name)) {
-      roboticDog.get(name).play();
-    } else if (roboticCat.containsKey(name)) {
-      roboticCat.get(name).play();
-    } else {
-      return false;
-    }
-    return true;
+    return virtualPets.get(name) != null;
   }
 
-  public boolean cleanCage(String name) {
-    if (organicDog.containsKey(name)) {
-      organicDog.get(name).clean();
-    } else if (organicCat.containsKey(name)) {
-      organicCat.get(name).clean();
-    } else if (roboticDog.containsKey(name)) {
-      roboticDog.get(name).clean();
-    } else if (roboticCat.containsKey(name)) {
-      roboticCat.get(name).clean();
-    } else {
-      return false;
-    }
-    return true;
+  public void walkDogs() {
+    for (var pet : virtualPets.values())
+      if (pet instanceof Dog)
+        ((Dog) pet).walk();
   }
 
-  public boolean walk(String name) {
-    if (organicDog.containsKey(name)) {
-      organicDog.get(name).walk();
-    } else if (organicCat.containsKey(name)) {
-      organicCat.get(name).walk();
-    } else if (roboticDog.containsKey(name)) {
-      roboticDog.get(name).walk();
-    } else if (roboticCat.containsKey(name)) {
-      roboticCat.get(name).walk();
-    } else {
-      return false;
-    }
-    return true;
+  public void cleanCage() {
+    for (var pet : virtualPets.values())
+      if (pet instanceof Dog)
+        ((Dog) pet).clean();
   }
 
   public void shelterTime() {
-    for (var pet : virtualPet.values()) {
+    for (var pet : virtualPets.values()) {
       pet.time();
     }
   }

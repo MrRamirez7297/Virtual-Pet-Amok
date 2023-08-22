@@ -1,24 +1,20 @@
 package pets_amok;
 
-public abstract class VirtualPet {
+public abstract class VirtualPets {
     protected String name;
-
-    protected String type;
 
     protected int health;
 
     protected int happiness;
 
-    protected VirtualPet(String name,String type) {
+    protected VirtualPets(String name) {
         this.name = name;
-        this.type = type;
         this.health = 50;
         this.happiness = 50;
     }
 
-    protected VirtualPet(String name,String type, int health, int happiness) {
+    protected VirtualPets(String name, int health, int happiness) {
         this.name = name;
-        this.type = type;
         this.health = health;
         this.happiness = happiness;
     }
@@ -27,9 +23,6 @@ public abstract class VirtualPet {
         return name;
     }
 
-    protected String getType() {
-        return type;
-    }
 
     protected int getHealth() {
         return health;
@@ -48,19 +41,10 @@ public abstract class VirtualPet {
     }
 
     protected void time() {
-        if (health >= 50){
+        if (health >= 50) {
             health -= 10;
         }
         happiness -= 5;
-
-    }
-
-    protected void clean() {
-        happiness += 5;
-        health += 10;
-    }
-
-    protected void remove() {
 
     }
 
