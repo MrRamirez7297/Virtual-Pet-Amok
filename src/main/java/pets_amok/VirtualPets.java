@@ -23,7 +23,6 @@ public abstract class VirtualPets {
         return name;
     }
 
-
     protected int getHealth() {
         return health;
     }
@@ -41,15 +40,12 @@ public abstract class VirtualPets {
     }
 
     protected void time() {
-        if (health >= 50) {
-            health -= 10;
-        }
-        happiness -= 5;
-
+        health += 1;
+        happiness += 1;
     }
 
     protected void play() {
-        happiness += 10;
-        health += 5;
+        happiness -= 20;
+        health -= 10;
     }
 }

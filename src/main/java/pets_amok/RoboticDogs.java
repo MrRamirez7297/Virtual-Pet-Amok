@@ -1,7 +1,6 @@
 package pets_amok;
 
-public class RoboticDogs extends RoboticPet implements Dog {
-
+public class RoboticDogs extends RoboticPets implements Dogs {
     public RoboticDogs(String name) {
         super(name);
     }
@@ -11,13 +10,13 @@ public class RoboticDogs extends RoboticPet implements Dog {
     }
 
     public void walk() {
-
-        if (happiness >= 0) {
-            happiness += 50;
-        }
+        happiness -= 40;
+        health -= 20;
     }
 
     public void clean() {
+        happiness -= 30;
+        health -= 20;
     }
 
 }

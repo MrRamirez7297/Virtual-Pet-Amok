@@ -1,17 +1,17 @@
 package pets_amok;
 
-public abstract class RoboticPet extends VirtualPets {
+public abstract class RoboticPets extends VirtualPets {
     protected int energy;
 
     protected int rust;
 
-    protected RoboticPet(String name) {
+    protected RoboticPets(String name) {
         super(name);
         this.energy = 50;
         this.rust = 50;
     }
 
-    protected RoboticPet(String name, int health, int happiness, int energy, int rust) {
+    protected RoboticPets(String name, int health, int happiness, int energy, int rust) {
         super(name, health, happiness);
         this.energy = energy;
         this.rust = rust;
@@ -34,12 +34,12 @@ public abstract class RoboticPet extends VirtualPets {
     }
 
     protected void charge() {
-        
+
         if (energy >= 50) {
             energy -= 50;
         }
-        rust+= 5;
-        happiness -= 5;
+        rust += 10;
+        happiness -= 10;
 
     }
 
@@ -47,7 +47,6 @@ public abstract class RoboticPet extends VirtualPets {
         if (rust >= 50) {
             rust -= 50;
         }
-        happiness -= 5;
-
+        happiness -= 10;
     }
 }

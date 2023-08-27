@@ -1,6 +1,6 @@
 package pets_amok;
 
-public interface Dog {
+public interface Dogs {
     void walk();
 
     void clean();

@@ -6,15 +6,15 @@ public class PetShelterApp {
     public static void main(String[] args) {
         PetShelter shelter = new PetShelter();
 
-        shelter.addPet(new OrganicDogs("Bob"));
-        shelter.addPet(new OrganicCats("Rick"));
+        shelter.addPet(new OrganicDogs("Dio"));
+        shelter.addPet(new OrganicCats("Ricky"));
         shelter.addPet(new RoboticDogs("Sparky"));
         shelter.addPet(new RoboticCats("Milo"));
 
-        shelter.shelterTime();
         Scanner scan = new Scanner(System.in);
 
         while (true) {
+            shelter.shelterTime();
             System.out.println();
             System.out.println("Here are all the Pets at our shelter!");
             displayPets(shelter);
@@ -26,8 +26,9 @@ public class PetShelterApp {
             System.out.println("Press 5: Give the organic pets water? ");
             System.out.println("Press 6: Oil the robotic pets? ");
             System.out.println("Press 7: Play with a pet? ");
-            System.out.println("Press 8: Clean a pets cage? ");
-            System.out.println("Press 9: Walk a pet? ");
+            System.out.println("Press 8: Clean the dogs cages? ");
+            System.out.println("Press 9: Clean the cats litter box? ");
+            System.out.println("Press 10: Walk the dogs?? ");
             System.out.println("Press 0: Exit shelter");
 
             String input = scan.nextLine();
@@ -64,7 +65,7 @@ public class PetShelterApp {
                     break;
 
                 case "6":
-                    System.out.println("Ok, you oiled the Robotic pets water!");
+                    System.out.println("Ok, you oiled the Robotic pets!");
                     shelter.oil();
                     break;
 
@@ -77,17 +78,18 @@ public class PetShelterApp {
                     break;
 
                 case "8":
-                    System.out.println("Ok, which pet's cage do you want to clean?");
-                    displayPets(shelter);
-                    name = scan.nextLine();
-                    System.out.printf("Ok, you cleaned %s cage \n", name);
+                    System.out.println("Ok, you cleaned all the dogs cages!");
+                    shelter.cleanCage();
                     break;
 
                 case "9":
-                    System.out.println("Ok, which pet do you want to walk?");
-                    displayPets(shelter);
-                    name = scan.nextLine();
-                    System.out.printf("Ok, you walked %s !\n", name);
+                    System.out.println("Ok, you cleaned the cats litterbox!");
+                    shelter.change();
+                    break;
+
+                case "10":
+                    System.out.println("Ok, you walked all the dogs!");
+                    shelter.walkDogs();
                     break;
 
                 case "0":

@@ -1,6 +1,6 @@
 package pets_amok;
 
-public class OrganicDogs extends OrganicPet implements Dog {
+public class OrganicDogs extends OrganicPets implements Dogs {
 
     public OrganicDogs(String name) {
         super(name);
@@ -11,11 +11,13 @@ public class OrganicDogs extends OrganicPet implements Dog {
     }
 
     public void walk() {
-        
-        if (happiness >= 0){
-            happiness += 50;
-        }
+        happiness -= 40;
+        health -= 20;
     }
-    public void clean(){}
+
+    public void clean() {
+        happiness -= 30;
+        health -= 20;
+    }
 
 }
